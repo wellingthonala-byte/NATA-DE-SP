@@ -314,6 +314,20 @@ footer{background:#050507;border-top:1px solid var(--border);padding:32px 20px;t
 .sticky-info strong{color:var(--g);font-size:1.1rem}
 .sticky .btn{width:auto;padding:12px 28px;font-size:.9rem}
 
+/* ── SOUND BTN ── */
+.sound-btn{
+  position:absolute;bottom:70px;right:12px;
+  background:rgba(0,0,0,.7);backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:999px;padding:6px 14px;
+  font-size:.78rem;font-weight:700;color:#fff;
+  cursor:pointer;display:flex;align-items:center;gap:6px;
+  z-index:10;transition:background .2s;user-select:none;
+}
+.sound-btn:hover{background:rgba(0,230,100,.4);border-color:var(--g)}
+.sound-btn.muted-state::before{content:'🔇'}
+.sound-btn.unmuted-state::before{content:'🔊'}
+
 /* ── RESPONSIVE ── */
 @media(max-width:768px){
   .hero-inner{grid-template-columns:1fr;text-align:center}
@@ -404,7 +418,8 @@ footer{background:#050507;border-top:1px solid var(--border);padding:32px 20px;t
       <div class="phone-showcase">
         <div class="phone-notch"></div>
         <div class="phone-screen">
-          <video src="video.mp4" autoplay muted loop playsinline></video>
+          <video src="video.mp4" autoplay muted loop playsinline id="heroVid"></video>
+          <button class="sound-btn muted-state" id="heroSoundBtn" onclick="toggleSound('heroVid','heroSoundBtn')">Som</button>
           <div class="phone-overlay">
             <div class="phone-views">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
@@ -487,7 +502,8 @@ footer{background:#050507;border-top:1px solid var(--border);padding:32px 20px;t
   <div class="container">
     <div class="demo-grid">
       <div class="video-demo-wrap">
-        <video src="video.mp4" autoplay muted loop playsinline></video>
+        <video src="video.mp4" autoplay muted loop playsinline id="demoVid"></video>
+        <button class="sound-btn muted-state" id="demoSoundBtn" onclick="toggleSound('demoVid','demoSoundBtn')">Som</button>
         <div class="video-demo-overlay">
           <span class="vdo-tag">🔥 VIRAL</span>
           <div class="vdo-title">Este é o tipo de conteúdo que você vai ter acesso</div>
@@ -780,6 +796,25 @@ footer{background:#050507;border-top:1px solid var(--border);padding:32px 20px;t
 </div>
 
 <script>
+// Som
+function toggleSound(vidId, btnId){
+  const v = document.getElementById(vidId);
+  const b = document.getElementById(btnId);
+  v.muted = !v.muted;
+  b.classList.toggle('muted-state', v.muted);
+  b.classList.toggle('unmuted-state', !v.muted);
+  // sincroniza os dois vídeos
+  document.querySelectorAll('video').forEach(vid => {
+    if(vid.id !== vidId) vid.muted = v.muted;
+  });
+  document.querySelectorAll('.sound-btn').forEach(btn => {
+    if(btn.id !== btnId){
+      btn.classList.toggle('muted-state', v.muted);
+      btn.classList.toggle('unmuted-state', !v.muted);
+    }
+  });
+}
+
 // Countdown — 2h a partir do carregamento
 (function(){
   const end = Date.now() + 2*60*60*1000;
