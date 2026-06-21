@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biblioteca Premium de Vídeos – 5.000+ Vídeos para TikTok</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #00c851;
+      --green-dark: #009c3f;
+      --dark: #0a0a0a;
+      --darker: #050505;
+      --card: #111111;
+      --border: #222222;
+      --text: #e8e8e8;
+      --muted: #888;
+      --red: #ff4444;
+      --gold: #f5c518;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--darker);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── UTILITIES ── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    .section { padding: 80px 0; }
+    .section-alt { background: var(--dark); }
+    .badge {
+      display: inline-block;
+      background: rgba(0,200,81,.15);
+      color: var(--green);
+      border: 1px solid rgba(0,200,81,.3);
+      border-radius: 999px;
+      padding: 4px 16px;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    h2.section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .section-sub {
+      text-align: center;
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 52px;
+    }
+
+    /* ── BTN ── */
+    .btn {
+      display: inline-block;
+      padding: 18px 40px;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: transform .15s, box-shadow .15s;
+      letter-spacing: .03em;
+    }
+    .btn:active { transform: scale(.97); }
+    .btn-green {
+      background: linear-gradient(135deg, #00c851, #009c3f);
+      color: #fff;
+      box-shadow: 0 6px 30px rgba(0,200,81,.35);
+    }
+    .btn-green:hover { box-shadow: 0 8px 40px rgba(0,200,81,.55); transform: translateY(-2px); }
+    .btn-pulse { animation: pulse 2.2s infinite; }
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 6px 30px rgba(0,200,81,.35); }
+      50%      { box-shadow: 0 8px 50px rgba(0,200,81,.7); }
+    }
+
+    /* ── HERO ── */
+    #hero {
+      background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(0,200,81,.12) 0%, transparent 70%), var(--darker);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 80px 0 60px;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .hero-eyebrow span { font-size: .85rem; color: var(--muted); }
+    .hero-title {
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .hero-title .accent { color: var(--green); }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin-bottom: 36px;
+      max-width: 480px;
+    }
+    .hero-cta-wrap { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+    .hero-cta-note { font-size: .82rem; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+    .hero-cta-note svg { flex-shrink: 0; }
+
+    /* MOCKUP */
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+    .mockup-wrap {
+      position: relative;
+      width: 340px;
+    }
+    .mockup-laptop {
+      width: 100%;
+      background: #1a1a1a;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      padding: 12px 12px 0;
+      box-shadow: 0 30px 80px rgba(0,0,0,.6);
+    }
+    .laptop-screen {
+      background: #0d0d0d;
+      border-radius: 6px;
+      overflow: hidden;
+      aspect-ratio: 16/10;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+      padding: 6px;
+    }
+    .thumb {
+      border-radius: 4px;
+      background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .6rem;
+      color: var(--muted);
+      aspect-ratio: 9/16;
+      position: relative;
+      overflow: hidden;
+    }
+    .thumb::after {
+      content: '▶';
+      position: absolute;
+      color: rgba(255,255,255,.3);
+      font-size: .8rem;
+    }
+    .thumb:nth-child(odd)  { background: linear-gradient(135deg,#1b2a1e,#162214); }
+    .thumb:nth-child(even) { background: linear-gradient(135deg,#1a1a2e,#16161a); }
+
+    .laptop-base {
+      height: 18px;
+      background: #222;
+      border-radius: 0 0 14px 14px;
+    }
+    .laptop-notch {
+      width: 40px; height: 8px;
+      background: #333;
+      border-radius: 0 0 6px 6px;
+      margin: 0 auto;
+    }
+
+    .badge-counter {
+      position: absolute;
+      top: -18px;
+      right: -18px;
+      background: var(--green);
+      color: #fff;
+      font-weight: 900;
+      font-size: .85rem;
+      border-radius: 12px;
+      padding: 8px 14px;
+      box-shadow: 0 4px 20px rgba(0,200,81,.5);
+      white-space: nowrap;
+    }
+    .badge-phone {
+      position: absolute;
+      bottom: 30px;
+      left: -30px;
+      width: 72px;
+      background: #1a1a1a;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 8px 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.5);
+    }
+    .phone-vid {
+      border-radius: 5px;
+      height: 36px;
+      background: linear-gradient(135deg,#1b2a1e,#162214);
+    }
+    .phone-vid:nth-child(2) { background: linear-gradient(135deg,#1a1a2e,#16161a); }
+    .phone-vid:nth-child(3) { background: linear-gradient(135deg,#2a1e1e,#221616); }
+
+    /* ── PAIN ── */
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .pain-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 600;
+    }
+    .pain-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+    /* ── SOLUTION / CATEGORIES ── */
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+    .cat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      font-size: .95rem;
+      transition: border-color .2s, background .2s;
+    }
+    .cat-card:hover { border-color: var(--green); background: rgba(0,200,81,.06); }
+    .cat-card .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      flex-shrink: 0;
+    }
+
+    /* ── BANNER CTA ── */
+    .banner-cta {
+      background: linear-gradient(135deg, rgba(0,200,81,.12), rgba(0,156,63,.06));
+      border: 1px solid rgba(0,200,81,.25);
+      border-radius: 16px;
+      padding: 50px 40px;
+      text-align: center;
+    }
+    .banner-cta h3 { font-size: 1.8rem; font-weight: 800; margin-bottom: 10px; }
+    .banner-cta p { color: var(--muted); margin-bottom: 28px; }
+
+    /* ── WHAT YOU GET ── */
+    .get-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .get-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 22px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .get-icon {
+      width: 40px; height: 40px;
+      background: rgba(0,200,81,.12);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .get-item h4 { font-weight: 700; margin-bottom: 2px; }
+    .get-item p { font-size: .88rem; color: var(--muted); }
+
+    /* ── HOW IT WORKS ── */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .step {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .step-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .step-num {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900;
+      font-size: 1rem;
+      flex-shrink: 0;
+      box-shadow: 0 4px 20px rgba(0,200,81,.3);
+    }
+    .step-line {
+      width: 2px;
+      flex: 1;
+      background: linear-gradient(to bottom, var(--green), transparent);
+      min-height: 40px;
+      margin: 6px 0;
+    }
+    .step-content { padding-bottom: 32px; padding-top: 8px; }
+    .step-content h4 { font-weight: 700; font-size: 1.05rem; margin-bottom: 4px; }
+    .step-content p { font-size: .9rem; color: var(--muted); }
+
+    /* ── RESULTS ── */
+    .results-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .before-card, .after-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      text-align: center;
+    }
+    .before-card { border-color: var(--red); }
+    .after-card { border-color: var(--green); }
+    .result-label {
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .before-card .result-label { color: var(--red); }
+    .after-card .result-label { color: var(--green); }
+    .result-num {
+      font-size: 2rem;
+      font-weight: 900;
+      margin-bottom: 4px;
+    }
+    .before-card .result-num { color: var(--muted); }
+    .result-note { font-size: .8rem; color: var(--muted); }
+    .after-nums {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .after-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .after-bar {
+      flex: 1;
+      height: 8px;
+      background: var(--border);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .after-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--green), #00ff66);
+      border-radius: 999px;
+    }
+    .after-val { font-weight: 700; font-size: .95rem; min-width: 80px; text-align: right; }
+
+    /* ── TESTIMONIALS ── */
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .testi-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+    }
+    .stars { color: var(--gold); font-size: 1.1rem; margin-bottom: 14px; }
+    .testi-text { font-size: .97rem; line-height: 1.6; margin-bottom: 18px; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: 10px; }
+    .testi-avatar {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700;
+      font-size: .9rem;
+    }
+    .testi-name { font-weight: 700; font-size: .9rem; }
+    .testi-handle { font-size: .78rem; color: var(--muted); }
+
+    /* ── GUARANTEE ── */
+    .guarantee-box {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .guarantee-icon {
+      font-size: 4rem;
+      flex-shrink: 0;
+      filter: drop-shadow(0 4px 12px rgba(0,200,81,.3));
+    }
+    .guarantee-text h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 8px; }
+    .guarantee-text p { color: var(--muted); }
+
+    /* ── PRICING ── */
+    #pricing { background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(0,200,81,.08) 0%, transparent 70%), var(--darker); }
+    .pricing-card {
+      background: var(--card);
+      border: 2px solid var(--green);
+      border-radius: 20px;
+      padding: 48px 40px;
+      max-width: 480px;
+      margin: 0 auto;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,200,81,.15);
+      position: relative;
+      overflow: hidden;
+    }
+    .pricing-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--green), #00ff88);
+    }
+    .pricing-tag {
+      background: var(--green);
+      color: #fff;
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      padding: 4px 18px;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+    .price-old {
+      color: var(--muted);
+      font-size: 1rem;
+      text-decoration: line-through;
+      margin-bottom: 4px;
+    }
+    .price-new {
+      font-size: 3.5rem;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .price-new span { font-size: 1.5rem; vertical-align: top; margin-top: 12px; display: inline-block; }
+    .price-install { color: var(--muted); font-size: .95rem; margin-bottom: 32px; }
+    .pricing-features {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .pricing-features li { display: flex; align-items: center; gap: 10px; font-size: .97rem; }
+    .pricing-features li::before {
+      content: '✓';
+      color: var(--green);
+      font-weight: 700;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .pricing-secure {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .secure-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .78rem;
+      color: var(--muted);
+    }
+
+    /* ── FAQ ── */
+    .faq-list { max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+    details {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: border-color .2s;
+    }
+    details[open] { border-color: rgba(0,200,81,.4); }
+    summary {
+      padding: 20px 24px;
+      cursor: pointer;
+      font-weight: 700;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      user-select: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: '+';
+      font-size: 1.3rem;
+      color: var(--green);
+      flex-shrink: 0;
+      transition: transform .2s;
+    }
+    details[open] summary::after { transform: rotate(45deg); }
+    .faq-answer { padding: 0 24px 20px; color: var(--muted); line-height: 1.7; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #060606;
+      border-top: 1px solid var(--border);
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .footer-payments {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .pay-badge {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 18px;
+      font-weight: 700;
+      font-size: .85rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .footer-note { font-size: .8rem; color: var(--muted); }
+
+    /* ── STICKY CTA ── */
+    .sticky-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(5,5,5,.95);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid var(--border);
+      padding: 12px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      z-index: 100;
+      transform: translateY(100%);
+      transition: transform .3s;
+    }
+    .sticky-cta.visible { transform: translateY(0); }
+    .sticky-price { font-size: 1rem; }
+    .sticky-price strong { color: var(--green); font-size: 1.2rem; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-sub { margin: 0 auto 36px; }
+      .hero-cta-wrap { align-items: center; }
+      .hero-visual { display: none; }
+      .results-grid { grid-template-columns: 1fr; }
+      .guarantee-box { flex-direction: column; text-align: center; }
+      .pricing-card { padding: 36px 24px; }
+      .banner-cta { padding: 36px 20px; }
+      .sticky-cta { gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════
+     HERO
+════════════════════════════════ -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-eyebrow">
+          <span class="badge">Biblioteca Premium</span>
+          <span>· Acesso Imediato</span>
+        </div>
+        <h1 class="hero-title">
+          Tenha acesso a mais de<br />
+          <span class="accent">5.000 vídeos virais</span><br />
+          prontos para impulsionar<br />seu TikTok
+        </h1>
+        <p class="hero-sub">
+          Economize centenas de horas procurando conteúdo. Receba uma
+          biblioteca organizada de vídeos prontos para edição, inspiração
+          ou publicação, atualizada constantemente.
+        </p>
+        <div class="hero-cta-wrap">
+          <a href="#pricing" class="btn btn-green btn-pulse">🚀 QUERO ACESSAR AGORA</a>
+          <span class="hero-cta-note">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00c851" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Acesso imediato · Garantia de 7 dias
+          </span>
+        </div>
+      </div>
+
+      <!-- Visual mockup -->
+      <div class="hero-visual">
+        <div class="mockup-wrap">
+          <div class="badge-counter">5.000+ Vídeos</div>
+          <div class="mockup-laptop">
+            <div class="laptop-screen">
+              <div class="thumb"></div><div class="thumb"></div><div class="thumb"></div>
+              <div class="thumb"></div><div class="thumb"></div><div class="thumb"></div>
+              <div class="thumb"></div><div class="thumb"></div><div class="thumb"></div>
+            </div>
+            <div class="laptop-base"><div class="laptop-notch"></div></div>
+          </div>
+          <div class="badge-phone">
+            <div class="phone-vid"></div>
+            <div class="phone-vid"></div>
+            <div class="phone-vid"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     PAIN
+════════════════════════════════ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="badge" style="display:block;text-align:center;">Você também sofre com isso?</div>
+    <h2 class="section-title">Reconhece alguma dessas situações?</h2>
+    <p class="section-sub">Se você marcou pelo menos uma, esta solução foi feita para você.</p>
+    <div class="pain-grid">
+      <div class="pain-item"><span class="pain-icon">❌</span>Não sabe o que postar</div>
+      <div class="pain-item"><span class="pain-icon">❌</span>Fica horas procurando vídeos</div>
+      <div class="pain-item"><span class="pain-icon">❌</span>Seu TikTok não cresce</div>
+      <div class="pain-item"><span class="pain-icon">❌</span>Não consegue viralizar</div>
+      <div class="pain-item"><span class="pain-icon">❌</span>Falta consistência nos posts</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     SOLUTION
+════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="badge" style="display:block;text-align:center;">A Solução</div>
+    <h2 class="section-title">Biblioteca Premium de Vídeos</h2>
+    <p class="section-sub">Mais de 5.000 vídeos organizados por categorias, prontos para você usar.</p>
+
+    <div class="cat-grid">
+      <div class="cat-card"><span class="dot"></span>Lifestyle</div>
+      <div class="cat-card"><span class="dot"></span>Humor</div>
+      <div class="cat-card"><span class="dot"></span>Motivação</div>
+      <div class="cat-card"><span class="dot"></span>Empreendedorismo</div>
+      <div class="cat-card"><span class="dot"></span>Curiosidades</div>
+      <div class="cat-card"><span class="dot"></span>Frases</div>
+      <div class="cat-card"><span class="dot"></span>Inteligência Artificial</div>
+      <div class="cat-card"><span class="dot"></span>Luxo</div>
+      <div class="cat-card"><span class="dot"></span>Dinheiro</div>
+      <div class="cat-card"><span class="dot"></span>Negócios</div>
+      <div class="cat-card"><span class="dot"></span>Lifestyle Feminino</div>
+      <div class="cat-card"><span class="dot"></span>Lifestyle Masculino</div>
+    </div>
+
+    <div class="banner-cta">
+      <h3>Basta baixar, editar e publicar.</h3>
+      <p>Mesmo quem nunca editou consegue utilizar. Interface simples, pastas organizadas, resultado profissional.</p>
+      <a href="#pricing" class="btn btn-green">QUERO ACESSAR AGORA</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     WHAT YOU GET
+════════════════════════════════ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="badge" style="display:block;text-align:center;">O que você recebe</div>
+    <h2 class="section-title">Tudo que você precisa para crescer</h2>
+    <p class="section-sub">Um pacote completo para nunca ficar sem conteúdo.</p>
+    <div class="get-grid">
+      <div class="get-item">
+        <div class="get-icon">🎬</div>
+        <div><h4>5.000+ Vídeos</h4><p>Biblioteca enorme, sempre crescendo</p></div>
+      </div>
+      <div class="get-item">
+        <div class="get-icon">🔄</div>
+        <div><h4>Atualizações</h4><p>Conteúdo novo adicionado regularmente</p></div>
+      </div>
+      <div class="get-item">
+        <div class="get-icon">⚡</div>
+        <div><h4>Acesso Imediato</h4><p>Disponível segundos após o pagamento</p></div>
+      </div>
+      <div class="get-item">
+        <div class="get-icon">📁</div>
+        <div><h4>Pastas Organizadas</h4><p>Separadas por nicho para fácil navegação</p></div>
+      </div>
+      <div class="get-item">
+        <div class="get-icon">💎</div>
+        <div><h4>Alta Qualidade</h4><p>Vídeos em resolução elevada</p></div>
+      </div>
+      <div class="get-item">
+        <div class="get-icon">📱</div>
+        <div><h4>Download Rápido</h4><p>Acesse pelo celular ou computador</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     HOW IT WORKS
+════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="badge" style="display:block;text-align:center;">Como Funciona</div>
+    <h2 class="section-title">Simples assim</h2>
+    <p class="section-sub">4 passos para você começar a postar hoje mesmo.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-left">
+          <div class="step-num">1</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-content">
+          <h4>Receba o acesso</h4>
+          <p>Após o pagamento, você recebe o link imediatamente por e-mail ou WhatsApp.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-left">
+          <div class="step-num">2</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-content">
+          <h4>Escolha os vídeos</h4>
+          <p>Navegue pelas pastas organizadas e selecione os vídeos do seu nicho.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-left">
+          <div class="step-num">3</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-content">
+          <h4>Edite rapidamente</h4>
+          <p>Adicione legenda, música ou seu logo. Leva menos de 5 minutos.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-left">
+          <div class="step-num">4</div>
+        </div>
+        <div class="step-content">
+          <h4>Publique e cresça</h4>
+          <p>Poste com consistência e veja seu perfil crescer todo dia.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     RESULTS
+════════════════════════════════ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="badge" style="display:block;text-align:center;">Resultados</div>
+    <h2 class="section-title">O que acontece quando você usa</h2>
+    <p class="section-sub">A diferença entre não ter conteúdo e ter a biblioteca certa.</p>
+    <div class="results-grid">
+      <div class="before-card">
+        <div class="result-label">Antes</div>
+        <div class="result-num" style="color:var(--red)">12</div>
+        <div class="result-note">visualizações</div>
+      </div>
+      <div class="after-card">
+        <div class="result-label">Depois</div>
+        <div class="after-nums">
+          <div class="after-row">
+            <div class="after-bar"><div class="after-fill" style="width:10%"></div></div>
+            <div class="after-val">15.000</div>
+          </div>
+          <div class="after-row">
+            <div class="after-bar"><div class="after-fill" style="width:30%"></div></div>
+            <div class="after-val">98.000</div>
+          </div>
+          <div class="after-row">
+            <div class="after-bar"><div class="after-fill" style="width:60%"></div></div>
+            <div class="after-val">450.000</div>
+          </div>
+          <div class="after-row">
+            <div class="after-bar"><div class="after-fill" style="width:100%"></div></div>
+            <div class="after-val">1.200.000</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     TESTIMONIALS
+════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="badge" style="display:block;text-align:center;">Depoimentos</div>
+    <h2 class="section-title">O que nossos clientes dizem</h2>
+    <p class="section-sub">Pessoas reais, resultados reais.</p>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p class="testi-text">"Economizei horas procurando conteúdo. Agora tenho tudo organizado e posto todos os dias sem stress."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:rgba(0,200,81,.15);color:var(--green)">A</div>
+          <div><div class="testi-name">Ana Clara</div><div class="testi-handle">@anaclara.tiktok</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p class="testi-text">"Comecei a postar todos os dias. Em duas semanas meu perfil saiu de 200 para mais de 5 mil seguidores."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:rgba(99,102,241,.15);color:#818cf8">M</div>
+          <div><div class="testi-name">Marcos Paulo</div><div class="testi-handle">@marcospaulo</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p class="testi-text">"Valeu cada centavo. Já recuperei o investimento com as parcerias que vieram depois do crescimento."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:rgba(245,197,24,.1);color:var(--gold)">J</div>
+          <div><div class="testi-name">Julia Ferreira</div><div class="testi-handle">@juliaferreira_</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     GUARANTEE
+════════════════════════════════ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="guarantee-box">
+      <div class="guarantee-icon">🛡️</div>
+      <div class="guarantee-text">
+        <h3>Garantia de 7 dias sem risco</h3>
+        <p>Compre com total tranquilidade. Se em 7 dias você não estiver satisfeito com a qualidade da biblioteca, basta entrar em contato e devolvemos 100% do seu dinheiro. Sem perguntas, sem burocracia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     PRICING
+════════════════════════════════ -->
+<section id="pricing" class="section">
+  <div class="container">
+    <div class="badge" style="display:block;text-align:center;">Oferta Especial</div>
+    <h2 class="section-title">Comece hoje por muito menos</h2>
+    <p class="section-sub">Preço promocional por tempo limitado. Não perca.</p>
+
+    <div class="pricing-card">
+      <div class="pricing-tag">🔥 Melhor Oferta</div>
+      <div class="price-old">De R$ 197,00</div>
+      <div class="price-new"><span>R$</span>47</div>
+      <div class="price-install">ou 12x de R$ 4,70 no cartão</div>
+
+      <ul class="pricing-features">
+        <li>5.000+ vídeos organizados por nicho</li>
+        <li>Acesso imediato após pagamento</li>
+        <li>Pastas organizadas por categoria</li>
+        <li>Atualizações incluídas</li>
+        <li>Alta qualidade de vídeo</li>
+        <li>Download rápido pelo celular ou PC</li>
+        <li>Garantia de 7 dias</li>
+      </ul>
+
+      <a href="#" class="btn btn-green btn-pulse" style="width:100%;text-align:center;font-size:1.15rem;">
+        ✅ QUERO MEU ACESSO AGORA
+      </a>
+
+      <div class="pricing-secure">
+        <span class="secure-badge">🔒 Checkout criptografado</span>
+        <span class="secure-badge">✅ Pagamento seguro</span>
+      </div>
+    </div>
+
+    <div class="footer-payments" style="margin-top:28px;">
+      <div class="pay-badge">⚡ PIX</div>
+      <div class="pay-badge">💳 Cartão de Crédito</div>
+      <div class="pay-badge">🏦 Boleto</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     FAQ
+════════════════════════════════ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="badge" style="display:block;text-align:center;">FAQ</div>
+    <h2 class="section-title">Perguntas frequentes</h2>
+    <p class="section-sub">Tire suas dúvidas antes de comprar.</p>
+    <div class="faq-list">
+      <details>
+        <summary>Posso acessar pelo celular?</summary>
+        <div class="faq-answer">Sim! A biblioteca é totalmente acessível pelo celular e pelo computador. Você pode baixar os vídeos diretamente para o seu dispositivo e já editar na hora.</div>
+      </details>
+      <details>
+        <summary>Recebo o acesso imediatamente?</summary>
+        <div class="faq-answer">Sim. Após a confirmação do pagamento (instantânea no PIX, alguns minutos no cartão), você recebe o link de acesso por e-mail e/ou WhatsApp imediatamente.</div>
+      </details>
+      <details>
+        <summary>O acesso é vitalício?</summary>
+        <div class="faq-answer">Sim, o acesso é vitalício. Pague uma vez e use para sempre, incluindo todas as atualizações futuras que forem adicionadas à biblioteca.</div>
+      </details>
+      <details>
+        <summary>Preciso editar os vídeos?</summary>
+        <div class="faq-answer">Depende do seu objetivo. Alguns vídeos podem ser publicados diretamente; outros se beneficiam de pequenas edições como legendas, música ou sua marca. Mesmo sem experiência, você consegue usar.</div>
+      </details>
+      <details>
+        <summary>Funciona para outros nichos além do TikTok?</summary>
+        <div class="faq-answer">Sim! Os vídeos funcionam no Instagram Reels, YouTube Shorts, Facebook e qualquer outra plataforma de vídeos curtos.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     FOOTER
+════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-payments">
+      <span class="secure-badge" style="font-size:.85rem;color:var(--text)">🔒 Ambiente 100% seguro</span>
+      <div class="pay-badge">⚡ PIX</div>
+      <div class="pay-badge">💳 Cartão</div>
+      <div class="pay-badge">🔐 Criptografado</div>
+    </div>
+    <p class="footer-note">© 2024 Biblioteca Premium de Vídeos · Todos os direitos reservados</p>
+    <p class="footer-note" style="margin-top:6px;">Os resultados apresentados são individuais e não garantem os mesmos resultados para todos os usuários.</p>
+  </div>
+</footer>
+
+<!-- ════════════════════════════════
+     STICKY CTA
+════════════════════════════════ -->
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-price">Biblioteca Premium · <strong>R$ 47</strong></div>
+  <a href="#pricing" class="btn btn-green" style="padding:12px 28px;font-size:.95rem;">QUERO ACESSAR</a>
+</div>
+
+<script>
+  const cta = document.getElementById('stickyCta');
+  const hero = document.getElementById('hero');
+  const obs = new IntersectionObserver(([e]) => {
+    cta.classList.toggle('visible', !e.isIntersecting);
+  }, { threshold: 0.1 });
+  obs.observe(hero);
+
+  // Animate result bars on scroll
+  const bars = document.querySelectorAll('.after-fill');
+  const barObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.transition = 'width 1.2s cubic-bezier(.4,0,.2,1)';
+        barObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  bars.forEach(b => { const w = b.style.width; b.style.width = '0'; barObs.observe(b); setTimeout(() => b.style.width = w, 100); });
+</script>
+</body>
+</html>
