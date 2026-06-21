@@ -1,675 +1,416 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Biblioteca Premium de Vídeos – 5.000+ Vídeos para TikTok</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>5.000+ Vídeos Virais para TikTok – Acesso Imediato</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --g:#00e664;--gd:#00b84f;--g2:linear-gradient(135deg,#00e664,#00b84f);
+  --dark:#07080a;--card:#0f1012;--border:#1e2024;
+  --text:#f0f0f0;--muted:#6b7280;--red:#ff3b3b;--gold:#fbbf24;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--dark);color:var(--text);line-height:1.6;overflow-x:hidden}
 
-    :root {
-      --green: #00c851;
-      --green-dark: #009c3f;
-      --dark: #0a0a0a;
-      --darker: #050505;
-      --card: #111111;
-      --border: #222222;
-      --text: #e8e8e8;
-      --muted: #888;
-      --red: #ff4444;
-      --gold: #f5c518;
-    }
+/* SCROLLBAR */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--dark)}
+::-webkit-scrollbar-thumb{background:var(--g);border-radius:2px}
 
-    html { scroll-behavior: smooth; }
+/* ── URGENCY BAR ── */
+.urgency-bar{
+  background:linear-gradient(90deg,#ff3b3b,#ff6b35,#ff3b3b);
+  background-size:200% 100%;
+  animation:barShift 3s linear infinite;
+  text-align:center;padding:10px 20px;
+  font-size:.82rem;font-weight:700;letter-spacing:.05em;
+  position:sticky;top:0;z-index:200;
+}
+@keyframes barShift{0%{background-position:0%}100%{background-position:200%}}
+.urgency-bar span{margin:0 8px}
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--darker);
-      color: var(--text);
-      line-height: 1.6;
-    }
+/* ── HERO ── */
+#hero{
+  min-height:100vh;
+  background:radial-gradient(ellipse 100% 80% at 50% 0%,rgba(0,230,100,.08) 0%,transparent 65%),var(--dark);
+  display:flex;align-items:center;
+  padding:60px 20px 80px;
+  position:relative;overflow:hidden;
+}
+#hero::before{
+  content:'';position:absolute;
+  top:-200px;right:-200px;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(0,230,100,.07),transparent 70%);
+  border-radius:50%;pointer-events:none;
+}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
 
-    /* ── UTILITIES ── */
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-    .section { padding: 80px 0; }
-    .section-alt { background: var(--dark); }
-    .badge {
-      display: inline-block;
-      background: rgba(0,200,81,.15);
-      color: var(--green);
-      border: 1px solid rgba(0,200,81,.3);
-      border-radius: 999px;
-      padding: 4px 16px;
-      font-size: .75rem;
-      font-weight: 700;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-    h2.section-title {
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 800;
-      text-align: center;
-      margin-bottom: 12px;
-    }
-    .section-sub {
-      text-align: center;
-      color: var(--muted);
-      font-size: 1.05rem;
-      margin-bottom: 52px;
-    }
+.hero-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;gap:6px;background:rgba(0,230,100,.12);border:1px solid rgba(0,230,100,.3);border-radius:999px;padding:5px 14px;font-size:.75rem;font-weight:700;color:var(--g);letter-spacing:.06em;text-transform:uppercase}
+.pill-red{background:rgba(255,59,59,.12);border-color:rgba(255,59,59,.3);color:#ff6b6b}
 
-    /* ── BTN ── */
-    .btn {
-      display: inline-block;
-      padding: 18px 40px;
-      border-radius: 8px;
-      font-size: 1.1rem;
-      font-weight: 800;
-      text-decoration: none;
-      cursor: pointer;
-      border: none;
-      transition: transform .15s, box-shadow .15s;
-      letter-spacing: .03em;
-    }
-    .btn:active { transform: scale(.97); }
-    .btn-green {
-      background: linear-gradient(135deg, #00c851, #009c3f);
-      color: #fff;
-      box-shadow: 0 6px 30px rgba(0,200,81,.35);
-    }
-    .btn-green:hover { box-shadow: 0 8px 40px rgba(0,200,81,.55); transform: translateY(-2px); }
-    .btn-pulse { animation: pulse 2.2s infinite; }
-    @keyframes pulse {
-      0%,100% { box-shadow: 0 6px 30px rgba(0,200,81,.35); }
-      50%      { box-shadow: 0 8px 50px rgba(0,200,81,.7); }
-    }
+.hero-title{font-size:clamp(2rem,4.2vw,3.1rem);font-weight:900;line-height:1.1;margin-bottom:18px}
+.hero-title .g{color:var(--g)}
+.hero-title .u{text-decoration:underline;text-decoration-color:var(--g);text-underline-offset:6px}
 
-    /* ── HERO ── */
-    #hero {
-      background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(0,200,81,.12) 0%, transparent 70%), var(--darker);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 80px 0 60px;
-    }
-    .hero-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-    .hero-eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 20px;
-    }
-    .hero-eyebrow span { font-size: .85rem; color: var(--muted); }
-    .hero-title {
-      font-size: clamp(2rem, 4.5vw, 3.2rem);
-      font-weight: 900;
-      line-height: 1.15;
-      margin-bottom: 20px;
-    }
-    .hero-title .accent { color: var(--green); }
-    .hero-sub {
-      font-size: 1.1rem;
-      color: var(--muted);
-      margin-bottom: 36px;
-      max-width: 480px;
-    }
-    .hero-cta-wrap { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
-    .hero-cta-note { font-size: .82rem; color: var(--muted); display: flex; align-items: center; gap: 6px; }
-    .hero-cta-note svg { flex-shrink: 0; }
+.hero-sub{font-size:1.05rem;color:var(--muted);margin-bottom:28px;max-width:460px}
 
-    /* MOCKUP */
-    .hero-visual {
-      position: relative;
-      display: flex;
-      justify-content: center;
-    }
-    .mockup-wrap {
-      position: relative;
-      width: 340px;
-    }
-    .mockup-laptop {
-      width: 100%;
-      background: #1a1a1a;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      padding: 12px 12px 0;
-      box-shadow: 0 30px 80px rgba(0,0,0,.6);
-    }
-    .laptop-screen {
-      background: #0d0d0d;
-      border-radius: 6px;
-      overflow: hidden;
-      aspect-ratio: 16/10;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 3px;
-      padding: 6px;
-    }
-    .thumb {
-      border-radius: 4px;
-      aspect-ratio: 9/16;
-      position: relative;
-      overflow: hidden;
-      background: #000;
-    }
-    .thumb video { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .thumb::after {
-      content: '▶';
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%,-50%);
-      color: rgba(255,255,255,.5);
-      font-size: .9rem;
-      pointer-events: none;
-    }
+.hero-stats{display:flex;gap:24px;margin-bottom:32px;flex-wrap:wrap}
+.stat{text-align:center}
+.stat-num{font-size:1.6rem;font-weight:900;color:var(--g);line-height:1}
+.stat-label{font-size:.72rem;color:var(--muted);margin-top:2px}
 
-    .laptop-base {
-      height: 18px;
-      background: #222;
-      border-radius: 0 0 14px 14px;
-    }
-    .laptop-notch {
-      width: 40px; height: 8px;
-      background: #333;
-      border-radius: 0 0 6px 6px;
-      margin: 0 auto;
-    }
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:18px 36px;border-radius:10px;font-size:1.05rem;font-weight:800;text-decoration:none;cursor:pointer;border:none;transition:transform .15s,box-shadow .15s;letter-spacing:.02em;width:100%}
+.btn:active{transform:scale(.97)}
+.btn-g{background:var(--g2);color:#000;box-shadow:0 6px 30px rgba(0,230,100,.4)}
+.btn-g:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(0,230,100,.6)}
+.btn-pulse{animation:btnPulse 2s infinite}
+@keyframes btnPulse{0%,100%{box-shadow:0 6px 30px rgba(0,230,100,.4)}50%{box-shadow:0 8px 50px rgba(0,230,100,.8)}}
 
-    .badge-counter {
-      position: absolute;
-      top: -18px;
-      right: -18px;
-      background: var(--green);
-      color: #fff;
-      font-weight: 900;
-      font-size: .85rem;
-      border-radius: 12px;
-      padding: 8px 14px;
-      box-shadow: 0 4px 20px rgba(0,200,81,.5);
-      white-space: nowrap;
-    }
-    .badge-phone {
-      position: absolute;
-      bottom: 30px;
-      left: -30px;
-      width: 72px;
-      background: #1a1a1a;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 8px 4px;
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.5);
-    }
-    .phone-vid {
-      border-radius: 5px;
-      height: 36px;
-      background: linear-gradient(135deg,#1b2a1e,#162214);
-    }
-    .phone-vid:nth-child(2) { background: linear-gradient(135deg,#1a1a2e,#16161a); }
-    .phone-vid:nth-child(3) { background: linear-gradient(135deg,#2a1e1e,#221616); }
+.cta-wrap{display:flex;flex-direction:column;gap:10px}
+.cta-note{display:flex;align-items:center;justify-content:center;gap:6px;font-size:.78rem;color:var(--muted)}
+.cta-note svg{color:var(--g);flex-shrink:0}
 
-    /* ── PAIN ── */
-    .pain-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    .pain-item {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 20px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 600;
-    }
-    .pain-icon { font-size: 1.3rem; flex-shrink: 0; }
+/* COUNTDOWN */
+.countdown-wrap{margin-bottom:20px}
+.countdown-label{font-size:.75rem;color:var(--red);font-weight:700;text-align:center;margin-bottom:8px;letter-spacing:.05em;text-transform:uppercase}
+.countdown{display:flex;justify-content:center;gap:8px}
+.cd-block{background:rgba(255,59,59,.1);border:1px solid rgba(255,59,59,.2);border-radius:8px;padding:8px 14px;text-align:center;min-width:56px}
+.cd-num{font-size:1.4rem;font-weight:900;color:#ff6b6b;line-height:1}
+.cd-label{font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.cd-sep{font-size:1.4rem;font-weight:900;color:#ff6b6b;align-self:center;margin-bottom:14px}
 
-    /* ── SOLUTION / CATEGORIES ── */
-    .cat-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      gap: 12px;
-      margin-bottom: 40px;
-    }
-    .cat-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 14px 16px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 600;
-      font-size: .95rem;
-      transition: border-color .2s, background .2s;
-    }
-    .cat-card:hover { border-color: var(--green); background: rgba(0,200,81,.06); }
-    .cat-card .dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--green);
-      flex-shrink: 0;
-    }
+/* ── VIDEO MOCKUP ── */
+.hero-visual{position:relative;display:flex;justify-content:center;align-items:center}
+.phone-showcase{
+  width:240px;
+  background:#111;
+  border-radius:36px;
+  border:2px solid #2a2a2a;
+  padding:10px;
+  box-shadow:0 40px 100px rgba(0,0,0,.8),0 0 0 1px #333,inset 0 0 0 1px #1a1a1a;
+  position:relative;
+}
+.phone-notch{width:70px;height:6px;background:#1a1a1a;border-radius:3px;margin:0 auto 8px}
+.phone-screen{
+  border-radius:26px;overflow:hidden;
+  aspect-ratio:9/16;position:relative;background:#000;
+}
+.phone-screen video{width:100%;height:100%;object-fit:cover;display:block}
+.phone-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom,transparent 60%,rgba(0,0,0,.8));
+  display:flex;flex-direction:column;justify-content:flex-end;padding:14px;
+}
+.phone-views{display:flex;align-items:center;gap:4px;font-size:.75rem;font-weight:700;color:#fff;margin-bottom:4px}
+.phone-views svg{color:var(--red)}
+.phone-likes{font-size:.7rem;color:rgba(255,255,255,.6)}
 
-    /* ── BANNER CTA ── */
-    .banner-cta {
-      background: linear-gradient(135deg, rgba(0,200,81,.12), rgba(0,156,63,.06));
-      border: 1px solid rgba(0,200,81,.25);
-      border-radius: 16px;
-      padding: 50px 40px;
-      text-align: center;
-    }
-    .banner-cta h3 { font-size: 1.8rem; font-weight: 800; margin-bottom: 10px; }
-    .banner-cta p { color: var(--muted); margin-bottom: 28px; }
+/* Floating badges */
+.float-badge{
+  position:absolute;
+  background:rgba(10,10,10,.9);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:10px 14px;
+  backdrop-filter:blur(12px);
+  white-space:nowrap;
+  animation:float 3s ease-in-out infinite;
+}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.float-badge.b1{top:10%;left:-110px;animation-delay:0s}
+.float-badge.b2{top:40%;right:-100px;animation-delay:.8s}
+.float-badge.b3{bottom:10%;left:-90px;animation-delay:1.5s}
+.fb-icon{font-size:1.1rem;margin-bottom:2px}
+.fb-num{font-size:1rem;font-weight:900;color:var(--g)}
+.fb-text{font-size:.68rem;color:var(--muted)}
 
-    /* ── WHAT YOU GET ── */
-    .get-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 16px;
-    }
-    .get-item {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 22px;
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-    }
-    .get-icon {
-      width: 40px; height: 40px;
-      background: rgba(0,200,81,.12);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
-      flex-shrink: 0;
-    }
-    .get-item h4 { font-weight: 700; margin-bottom: 2px; }
-    .get-item p { font-size: .88rem; color: var(--muted); }
+/* ── SOCIAL PROOF BAR ── */
+.proof-bar{background:rgba(0,230,100,.04);border-top:1px solid rgba(0,230,100,.1);border-bottom:1px solid rgba(0,230,100,.1);padding:20px;overflow:hidden;position:relative}
+.proof-track{display:flex;gap:40px;animation:scroll 20s linear infinite;width:max-content}
+.proof-item{display:flex;align-items:center;gap:8px;white-space:nowrap;font-size:.82rem;color:var(--muted)}
+.proof-item strong{color:var(--text)}
+.proof-dot{width:6px;height:6px;border-radius:50%;background:var(--g);flex-shrink:0}
+@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-    /* ── HOW IT WORKS ── */
-    .steps {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      max-width: 480px;
-      margin: 0 auto;
-    }
-    .step {
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-    }
-    .step-left {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .step-num {
-      width: 44px; height: 44px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--green), var(--green-dark));
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 900;
-      font-size: 1rem;
-      flex-shrink: 0;
-      box-shadow: 0 4px 20px rgba(0,200,81,.3);
-    }
-    .step-line {
-      width: 2px;
-      flex: 1;
-      background: linear-gradient(to bottom, var(--green), transparent);
-      min-height: 40px;
-      margin: 6px 0;
-    }
-    .step-content { padding-bottom: 32px; padding-top: 8px; }
-    .step-content h4 { font-weight: 700; font-size: 1.05rem; margin-bottom: 4px; }
-    .step-content p { font-size: .9rem; color: var(--muted); }
+/* ── SECTIONS ── */
+.section{padding:80px 20px}
+.section-alt{background:rgba(255,255,255,.015)}
+.container{max-width:1100px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(0,230,100,.1);color:var(--g);border:1px solid rgba(0,230,100,.2);border-radius:6px;padding:3px 12px;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px}
+h2.st{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:900;margin-bottom:10px}
+.sub{color:var(--muted);font-size:1rem;margin-bottom:48px;max-width:560px}
+.center{text-align:center}.center .sub{margin-left:auto;margin-right:auto}
 
-    /* ── RESULTS ── */
-    .results-grid {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 24px;
-      align-items: start;
-    }
-    .before-card, .after-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 28px;
-      text-align: center;
-    }
-    .before-card { border-color: var(--red); }
-    .after-card { border-color: var(--green); }
-    .result-label {
-      font-size: .75rem;
-      font-weight: 700;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-    .before-card .result-label { color: var(--red); }
-    .after-card .result-label { color: var(--green); }
-    .result-num {
-      font-size: 2rem;
-      font-weight: 900;
-      margin-bottom: 4px;
-    }
-    .before-card .result-num { color: var(--muted); }
-    .result-note { font-size: .8rem; color: var(--muted); }
-    .after-nums {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .after-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .after-bar {
-      flex: 1;
-      height: 8px;
-      background: var(--border);
-      border-radius: 999px;
-      overflow: hidden;
-    }
-    .after-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--green), #00ff66);
-      border-radius: 999px;
-    }
-    .after-val { font-weight: 700; font-size: .95rem; min-width: 80px; text-align: right; }
+/* ── VIDEO DEMO ── */
+.video-demo-wrap{
+  border-radius:20px;overflow:hidden;
+  position:relative;
+  border:1px solid var(--border);
+  box-shadow:0 0 0 1px rgba(0,230,100,.1),0 40px 80px rgba(0,0,0,.6);
+  max-width:480px;margin:0 auto;
+  aspect-ratio:9/16;
+  background:#000;
+}
+.video-demo-wrap video{width:100%;height:100%;object-fit:cover;display:block}
+.video-demo-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom,transparent 50%,rgba(0,0,0,.85));
+  display:flex;flex-direction:column;justify-content:flex-end;padding:24px;
+}
+.vdo-tag{background:var(--red);color:#fff;font-size:.7rem;font-weight:700;border-radius:4px;padding:2px 8px;display:inline-block;margin-bottom:8px;width:fit-content}
+.vdo-title{font-size:1rem;font-weight:700;margin-bottom:12px}
+.vdo-stats{display:flex;gap:16px}
+.vdo-stat{display:flex;align-items:center;gap:4px;font-size:.8rem;color:rgba(255,255,255,.7)}
 
-    /* ── TESTIMONIALS ── */
-    .testi-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
-    }
-    .testi-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 28px;
-    }
-    .stars { color: var(--gold); font-size: 1.1rem; margin-bottom: 14px; }
-    .testi-text { font-size: .97rem; line-height: 1.6; margin-bottom: 18px; font-style: italic; }
-    .testi-author { display: flex; align-items: center; gap: 10px; }
-    .testi-avatar {
-      width: 38px; height: 38px;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 700;
-      font-size: .9rem;
-    }
-    .testi-name { font-weight: 700; font-size: .9rem; }
-    .testi-handle { font-size: .78rem; color: var(--muted); }
+.demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
+.demo-points{display:flex;flex-direction:column;gap:20px}
+.dp{display:flex;gap:16px;align-items:flex-start}
+.dp-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;background:rgba(0,230,100,.1);border:1px solid rgba(0,230,100,.15)}
+.dp-title{font-weight:700;margin-bottom:3px}
+.dp-text{font-size:.88rem;color:var(--muted)}
 
-    /* ── GUARANTEE ── */
-    .guarantee-box {
-      display: flex;
-      gap: 28px;
-      align-items: center;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 40px;
-      max-width: 680px;
-      margin: 0 auto;
-    }
-    .guarantee-icon {
-      font-size: 4rem;
-      flex-shrink: 0;
-      filter: drop-shadow(0 4px 12px rgba(0,200,81,.3));
-    }
-    .guarantee-text h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 8px; }
-    .guarantee-text p { color: var(--muted); }
+/* ── PAIN ── */
+.pain-vs{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.pain-side{background:var(--card);border-radius:14px;padding:28px;border:1px solid var(--border)}
+.pain-side.bad{border-color:rgba(255,59,59,.2)}
+.pain-side.good{border-color:rgba(0,230,100,.2)}
+.pain-header{display:flex;align-items:center;gap:10px;margin-bottom:20px}
+.pain-header-icon{font-size:1.4rem}
+.pain-header h3{font-size:1rem;font-weight:800}
+.pain-list{display:flex;flex-direction:column;gap:12px}
+.pain-item{display:flex;align-items:flex-start;gap:10px;font-size:.9rem}
+.pain-item .ic{flex-shrink:0;margin-top:2px}
 
-    /* ── PRICING ── */
-    #pricing { background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(0,200,81,.08) 0%, transparent 70%), var(--darker); }
-    .pricing-card {
-      background: var(--card);
-      border: 2px solid var(--green);
-      border-radius: 20px;
-      padding: 48px 40px;
-      max-width: 480px;
-      margin: 0 auto;
-      text-align: center;
-      box-shadow: 0 20px 60px rgba(0,200,81,.15);
-      position: relative;
-      overflow: hidden;
-    }
-    .pricing-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--green), #00ff88);
-    }
-    .pricing-tag {
-      background: var(--green);
-      color: #fff;
-      font-size: .75rem;
-      font-weight: 800;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      border-radius: 999px;
-      padding: 4px 18px;
-      display: inline-block;
-      margin-bottom: 20px;
-    }
-    .price-old {
-      color: var(--muted);
-      font-size: 1rem;
-      text-decoration: line-through;
-      margin-bottom: 4px;
-    }
-    .price-new {
-      font-size: 3.5rem;
-      font-weight: 900;
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-    .price-new span { font-size: 1.5rem; vertical-align: top; margin-top: 12px; display: inline-block; }
-    .price-install { color: var(--muted); font-size: .95rem; margin-bottom: 32px; }
-    .pricing-features {
-      list-style: none;
-      text-align: left;
-      margin-bottom: 36px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .pricing-features li { display: flex; align-items: center; gap: 10px; font-size: .97rem; }
-    .pricing-features li::before {
-      content: '✓';
-      color: var(--green);
-      font-weight: 700;
-      font-size: 1rem;
-      flex-shrink: 0;
-    }
-    .pricing-secure {
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-    .secure-badge {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: .78rem;
-      color: var(--muted);
-    }
+/* ── CATEGORIES ── */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-bottom:40px}
+.cat{
+  background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:14px 16px;display:flex;align-items:center;gap:10px;
+  font-weight:600;font-size:.88rem;cursor:default;
+  transition:all .2s;
+}
+.cat:hover{border-color:var(--g);background:rgba(0,230,100,.06);transform:translateY(-2px)}
+.cat-dot{width:7px;height:7px;border-radius:50%;background:var(--g);flex-shrink:0}
 
-    /* ── FAQ ── */
-    .faq-list { max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
-    details {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      overflow: hidden;
-      transition: border-color .2s;
-    }
-    details[open] { border-color: rgba(0,200,81,.4); }
-    summary {
-      padding: 20px 24px;
-      cursor: pointer;
-      font-weight: 700;
-      list-style: none;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      user-select: none;
-    }
-    summary::-webkit-details-marker { display: none; }
-    summary::after {
-      content: '+';
-      font-size: 1.3rem;
-      color: var(--green);
-      flex-shrink: 0;
-      transition: transform .2s;
-    }
-    details[open] summary::after { transform: rotate(45deg); }
-    .faq-answer { padding: 0 24px 20px; color: var(--muted); line-height: 1.7; }
+/* ── HOW IT WORKS ── */
+.steps{display:flex;flex-direction:column;gap:0;max-width:520px;margin:0 auto}
+.step{display:flex;gap:20px}
+.step-l{display:flex;flex-direction:column;align-items:center}
+.step-num{
+  width:46px;height:46px;border-radius:50%;
+  background:var(--g2);color:#000;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:1rem;flex-shrink:0;
+  box-shadow:0 4px 20px rgba(0,230,100,.35);
+}
+.step-line{width:2px;flex:1;background:linear-gradient(to bottom,var(--g),transparent);min-height:36px;margin:6px 0}
+.step-r{padding-bottom:32px;padding-top:8px}
+.step-r h4{font-weight:800;font-size:1rem;margin-bottom:4px}
+.step-r p{font-size:.88rem;color:var(--muted)}
 
-    /* ── FOOTER ── */
-    footer {
-      background: #060606;
-      border-top: 1px solid var(--border);
-      padding: 40px 20px;
-      text-align: center;
-    }
-    .footer-payments {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
-    }
-    .pay-badge {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 8px 18px;
-      font-weight: 700;
-      font-size: .85rem;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .footer-note { font-size: .8rem; color: var(--muted); }
+/* ── RESULTS ── */
+.results-showcase{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.result-card{
+  background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:24px;text-align:center;position:relative;overflow:hidden;
+}
+.result-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--g2)}
+.result-num{font-size:2.2rem;font-weight:900;color:var(--g);line-height:1;margin-bottom:4px}
+.result-label{font-size:.78rem;color:var(--muted)}
+.result-arrow{font-size:.8rem;color:var(--g);margin:8px 0}
 
-    /* ── STICKY CTA ── */
-    .sticky-cta {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(5,5,5,.95);
-      backdrop-filter: blur(12px);
-      border-top: 1px solid var(--border);
-      padding: 12px 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-      z-index: 100;
-      transform: translateY(100%);
-      transition: transform .3s;
-    }
-    .sticky-cta.visible { transform: translateY(0); }
-    .sticky-price { font-size: 1rem; }
-    .sticky-price strong { color: var(--green); font-size: 1.2rem; }
+/* ── TESTIMONIALS ── */
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.testi{
+  background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:26px;position:relative;
+}
+.testi::before{content:'"';position:absolute;top:12px;right:20px;font-size:4rem;color:rgba(0,230,100,.1);font-family:Georgia,serif;line-height:1}
+.stars{color:var(--gold);font-size:1rem;margin-bottom:12px;letter-spacing:2px}
+.testi-text{font-size:.92rem;line-height:1.65;margin-bottom:16px;color:#ccc}
+.testi-foot{display:flex;align-items:center;gap:10px}
+.tav{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.85rem;flex-shrink:0}
+.tname{font-weight:700;font-size:.88rem}
+.thandle{font-size:.74rem;color:var(--muted)}
+.tverified{display:inline-flex;align-items:center;gap:4px;font-size:.7rem;color:var(--g);margin-top:2px}
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      .hero-inner { grid-template-columns: 1fr; text-align: center; }
-      .hero-sub { margin: 0 auto 36px; }
-      .hero-cta-wrap { align-items: center; }
-      .hero-visual { display: none; }
-      .results-grid { grid-template-columns: 1fr; }
-      .guarantee-box { flex-direction: column; text-align: center; }
-      .pricing-card { padding: 36px 24px; }
-      .banner-cta { padding: 36px 20px; }
-      .sticky-cta { gap: 12px; }
-    }
-  </style>
+/* ── GUARANTEE ── */
+.guarantee{
+  display:flex;gap:28px;align-items:center;
+  background:linear-gradient(135deg,rgba(0,230,100,.06),rgba(0,184,79,.03));
+  border:1px solid rgba(0,230,100,.2);border-radius:20px;
+  padding:40px;max-width:680px;margin:0 auto;
+}
+.g-icon{font-size:4.5rem;flex-shrink:0;filter:drop-shadow(0 0 20px rgba(0,230,100,.4))}
+.g-text h3{font-size:1.4rem;font-weight:900;margin-bottom:8px}
+.g-text p{color:var(--muted);font-size:.92rem}
+
+/* ── PRICING ── */
+#pricing{background:radial-gradient(ellipse 80% 60% at 50% 100%,rgba(0,230,100,.06),transparent 70%),var(--dark)}
+.pricing-card{
+  background:var(--card);
+  border:2px solid var(--g);border-radius:24px;
+  padding:48px 40px;max-width:500px;margin:0 auto;
+  text-align:center;
+  box-shadow:0 0 0 1px rgba(0,230,100,.1),0 30px 80px rgba(0,230,100,.12);
+  position:relative;overflow:hidden;
+}
+.pricing-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--g2)}
+.pc-tag{background:var(--red);color:#fff;font-size:.72rem;font-weight:800;border-radius:6px;padding:4px 12px;display:inline-block;margin-bottom:18px;letter-spacing:.05em;text-transform:uppercase;animation:tagPulse 1.5s infinite}
+@keyframes tagPulse{0%,100%{opacity:1}50%{opacity:.7}}
+.pc-spots{background:rgba(255,59,59,.08);border:1px solid rgba(255,59,59,.2);border-radius:8px;padding:10px 16px;font-size:.82rem;color:#ff6b6b;font-weight:600;margin-bottom:20px}
+.price-old{color:var(--muted);font-size:1rem;text-decoration:line-through;margin-bottom:4px}
+.price-new{font-size:4rem;font-weight:900;line-height:1;margin-bottom:2px;color:#fff}
+.price-new sup{font-size:1.6rem;vertical-align:top;margin-top:12px;display:inline-block;color:var(--g)}
+.price-install{color:var(--muted);font-size:.9rem;margin-bottom:28px}
+.price-save{background:rgba(0,230,100,.1);border:1px solid rgba(0,230,100,.2);border-radius:8px;padding:8px 16px;font-size:.82rem;color:var(--g);font-weight:700;margin-bottom:28px;display:inline-block}
+.pf-list{list-style:none;text-align:left;margin-bottom:32px;display:flex;flex-direction:column;gap:10px}
+.pf-list li{display:flex;align-items:center;gap:10px;font-size:.9rem}
+.pf-list li::before{content:'✓';color:var(--g);font-weight:900;font-size:.95rem;flex-shrink:0}
+.pay-methods{margin-top:20px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.pm{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:6px;padding:6px 12px;font-size:.75rem;color:var(--muted)}
+
+/* ── FAQ ── */
+.faq-list{max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+details{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .2s}
+details[open]{border-color:rgba(0,230,100,.3)}
+summary{padding:20px 24px;cursor:pointer;font-weight:700;font-size:.95rem;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;user-select:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:'+';font-size:1.4rem;color:var(--g);flex-shrink:0;transition:transform .2s;font-weight:400}
+details[open] summary::after{transform:rotate(45deg)}
+.fa{padding:0 24px 20px;color:var(--muted);line-height:1.7;font-size:.9rem}
+
+/* ── FINAL CTA ── */
+.final-cta{
+  background:radial-gradient(ellipse 80% 80% at 50% 50%,rgba(0,230,100,.08),transparent 70%);
+  border:1px solid rgba(0,230,100,.15);border-radius:24px;
+  padding:60px 40px;text-align:center;
+}
+.final-cta h2{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:900;margin-bottom:12px}
+.final-cta p{color:var(--muted);margin-bottom:36px}
+.final-cta .btn{max-width:400px;margin:0 auto;font-size:1.1rem;padding:20px 40px}
+
+/* ── FOOTER ── */
+footer{background:#050507;border-top:1px solid var(--border);padding:32px 20px;text-align:center}
+.foot-note{font-size:.75rem;color:var(--muted);margin-top:8px}
+
+/* ── STICKY ── */
+.sticky{
+  position:fixed;bottom:0;left:0;right:0;
+  background:rgba(7,8,10,.97);backdrop-filter:blur(16px);
+  border-top:1px solid var(--border);
+  padding:12px 20px;
+  display:flex;justify-content:center;align-items:center;gap:20px;
+  z-index:150;
+  transform:translateY(100%);transition:transform .3s;
+}
+.sticky.on{transform:translateY(0)}
+.sticky-info{font-size:.9rem}
+.sticky-info strong{color:var(--g);font-size:1.1rem}
+.sticky .btn{width:auto;padding:12px 28px;font-size:.9rem}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .hero-inner{grid-template-columns:1fr;text-align:center}
+  .hero-sub{margin-left:auto;margin-right:auto}
+  .hero-stats{justify-content:center}
+  .hero-visual{margin-top:40px}
+  .float-badge{display:none}
+  .pain-vs{grid-template-columns:1fr}
+  .demo-grid{grid-template-columns:1fr}
+  .results-showcase{grid-template-columns:repeat(2,1fr)}
+  .guarantee{flex-direction:column;text-align:center;padding:32px 24px}
+  .pricing-card{padding:36px 20px}
+  .final-cta{padding:40px 20px}
+  .sticky{gap:12px}
+}
+</style>
 </head>
 <body>
 
-<!-- ════════════════════════════════
-     HERO
-════════════════════════════════ -->
+<!-- URGENCY BAR -->
+<div class="urgency-bar">
+  🔥 <span>OFERTA EXPIRA EM:</span>
+  <span id="uTimer">00:00:00</span>
+  <span>· Apenas <strong id="uSpots">17</strong> acessos restantes neste preço</span>
+</div>
+
+<!-- ══════════════════ HERO ══════════════════ -->
 <section id="hero">
-  <div class="container">
-    <div class="hero-inner">
-      <div>
-        <div class="hero-eyebrow">
-          <span class="badge">Biblioteca Premium</span>
-          <span>· Acesso Imediato</span>
-        </div>
-        <h1 class="hero-title">
-          Tenha acesso a mais de<br />
-          <span class="accent">5.000 vídeos virais</span><br />
-          prontos para impulsionar<br />seu TikTok
-        </h1>
-        <p class="hero-sub">
-          Economize centenas de horas procurando conteúdo. Receba uma
-          biblioteca organizada de vídeos prontos para edição, inspiração
-          ou publicação, atualizada constantemente.
-        </p>
-        <div class="hero-cta-wrap">
-          <a href="#pricing" class="btn btn-green btn-pulse">🚀 QUERO ACESSAR AGORA</a>
-          <span class="hero-cta-note">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00c851" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Acesso imediato · Garantia de 7 dias
-          </span>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">
+        <span class="pill">🔥 Oferta Limitada</span>
+        <span class="pill pill-red">⏰ Expira Hoje</span>
+      </div>
+
+      <h1 class="hero-title">
+        A biblioteca de vídeos que vai fazer o seu TikTok <span class="g u">explodir em visualizações</span>
+      </h1>
+      <p class="hero-sub">
+        +5.000 vídeos virais organizados por nicho. Baixe, edite em 5 minutos e publique. Sem experiência necessária.
+      </p>
+
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num">5.000+</div><div class="stat-label">Vídeos prontos</div></div>
+        <div class="stat"><div class="stat-num">12</div><div class="stat-label">Nichos</div></div>
+        <div class="stat"><div class="stat-num">3.200+</div><div class="stat-label">Clientes</div></div>
+        <div class="stat"><div class="stat-num">4.9★</div><div class="stat-label">Avaliação</div></div>
+      </div>
+
+      <div class="countdown-wrap">
+        <div class="countdown-label">⚠️ Preço sobe em:</div>
+        <div class="countdown">
+          <div class="cd-block"><div class="cd-num" id="cdH">00</div><div class="cd-label">hrs</div></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-block"><div class="cd-num" id="cdM">00</div><div class="cd-label">min</div></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-block"><div class="cd-num" id="cdS">00</div><div class="cd-label">seg</div></div>
         </div>
       </div>
 
-      <!-- Visual mockup -->
-      <div class="hero-visual">
-        <div class="mockup-wrap">
-          <div class="badge-counter">5.000+ Vídeos</div>
-          <div class="mockup-laptop">
-            <div class="laptop-screen">
-              <div class="thumb"><video src="video.mp4" autoplay muted loop playsinline></video></div>
-              <div class="thumb"><video src="video.mp4" autoplay muted loop playsinline style="animation-delay:.5s"></video></div>
-              <div class="thumb"><video src="video.mp4" autoplay muted loop playsinline></video></div>
-              <div class="thumb"><video src="video.mp4" autoplay muted loop playsinline></video></div>
-              <div class="thumb"><video src="video.mp4" autoplay muted loop playsinline style="animation-delay:.3s"></video></div>
-              <div class="thumb"><video src="video.mp4" autoplay muted loop playsinline></video></div>
-              <div class="thumb"><video src="video.mp4" autoplay muted loop playsinline></video></div>
-              <div class="thumb"><video src="video.mp4" autoplay muted loop playsinline style="animation-delay:.7s"></video></div>
-              <div class="thumb"><video src="video.mp4" autoplay muted loop playsinline></video></div>
+      <div class="cta-wrap">
+        <a href="#pricing" class="btn btn-g btn-pulse">🚀 QUERO MEUS 5.000 VÍDEOS AGORA</a>
+        <span class="cta-note">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Acesso imediato · Garantia 7 dias · Pagamento seguro
+        </span>
+      </div>
+    </div>
+
+    <!-- PHONE MOCKUP -->
+    <div class="hero-visual">
+      <div class="float-badge b1">
+        <div class="fb-icon">👁️</div>
+        <div class="fb-num">1.2M</div>
+        <div class="fb-text">visualizações</div>
+      </div>
+      <div class="float-badge b2">
+        <div class="fb-icon">📈</div>
+        <div class="fb-num">+847%</div>
+        <div class="fb-text">crescimento</div>
+      </div>
+      <div class="float-badge b3">
+        <div class="fb-icon">❤️</div>
+        <div class="fb-num">98K</div>
+        <div class="fb-text">curtidas</div>
+      </div>
+
+      <div class="phone-showcase">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <video src="video.mp4" autoplay muted loop playsinline></video>
+          <div class="phone-overlay">
+            <div class="phone-views">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+              1.247.389 views
             </div>
-            <div class="laptop-base"><div class="laptop-notch"></div></div>
-          </div>
-          <div class="badge-phone">
-            <div class="phone-vid"><video src="video.mp4" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;border-radius:5px;display:block;"></video></div>
-            <div class="phone-vid"><video src="video.mp4" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;border-radius:5px;display:block;"></video></div>
-            <div class="phone-vid"><video src="video.mp4" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;border-radius:5px;display:block;"></video></div>
+            <div class="phone-likes">❤️ 98.4K &nbsp; 💬 3.2K &nbsp; ↗️ 47K</div>
           </div>
         </div>
       </div>
@@ -677,355 +418,406 @@
   </div>
 </section>
 
-<!-- ════════════════════════════════
-     PAIN
-════════════════════════════════ -->
+<!-- SOCIAL PROOF SCROLL -->
+<div class="proof-bar">
+  <div class="proof-track" id="proofTrack">
+    <div class="proof-item"><span class="proof-dot"></span><strong>Ana Clara</strong> acabou de comprar</div>
+    <div class="proof-item"><span class="proof-dot"></span><strong>Marcos</strong> · 450K views no primeiro vídeo</div>
+    <div class="proof-item"><span class="proof-dot"></span><strong>Julia F.</strong> acabou de comprar</div>
+    <div class="proof-item"><span class="proof-dot"></span><strong>Pedro H.</strong> · 1.2M views</div>
+    <div class="proof-item"><span class="proof-dot"></span><strong>Carla M.</strong> acabou de comprar</div>
+    <div class="proof-item"><span class="proof-dot"></span><strong>+3.200 clientes</strong> satisfeitos</div>
+    <div class="proof-item"><span class="proof-dot"></span><strong>Lucas R.</strong> · TikTok cresceu 900% em 30 dias</div>
+    <div class="proof-item"><span class="proof-dot"></span><strong>Fernanda</strong> acabou de comprar</div>
+    <!-- duplicado para loop infinito -->
+    <div class="proof-item"><span class="proof-dot"></span><strong>Ana Clara</strong> acabou de comprar</div>
+    <div class="proof-item"><span class="proof-dot"></span><strong>Marcos</strong> · 450K views no primeiro vídeo</div>
+    <div class="proof-item"><span class="proof-dot"></span><strong>Julia F.</strong> acabou de comprar</div>
+    <div class="proof-item"><span class="proof-dot"></span><strong>Pedro H.</strong> · 1.2M views</div>
+    <div class="proof-item"><span class="proof-dot"></span><strong>Carla M.</strong> acabou de comprar</div>
+    <div class="proof-item"><span class="proof-dot"></span><strong>+3.200 clientes</strong> satisfeitos</div>
+    <div class="proof-item"><span class="proof-dot"></span><strong>Lucas R.</strong> · TikTok cresceu 900% em 30 dias</div>
+    <div class="proof-item"><span class="proof-dot"></span><strong>Fernanda</strong> acabou de comprar</div>
+  </div>
+</div>
+
+<!-- ══════════════════ PAIN vs GAIN ══════════════════ -->
 <section class="section section-alt">
   <div class="container">
-    <div class="badge" style="display:block;text-align:center;">Você também sofre com isso?</div>
-    <h2 class="section-title">Reconhece alguma dessas situações?</h2>
-    <p class="section-sub">Se você marcou pelo menos uma, esta solução foi feita para você.</p>
-    <div class="pain-grid">
-      <div class="pain-item"><span class="pain-icon">❌</span>Não sabe o que postar</div>
-      <div class="pain-item"><span class="pain-icon">❌</span>Fica horas procurando vídeos</div>
-      <div class="pain-item"><span class="pain-icon">❌</span>Seu TikTok não cresce</div>
-      <div class="pain-item"><span class="pain-icon">❌</span>Não consegue viralizar</div>
-      <div class="pain-item"><span class="pain-icon">❌</span>Falta consistência nos posts</div>
+    <div class="center" style="margin-bottom:40px">
+      <div class="section-tag">A realidade</div>
+      <h2 class="st">Você está perdendo dinheiro sem perceber</h2>
+      <p class="sub">Enquanto você passa horas procurando conteúdo, seus concorrentes já estão postando e crescendo.</p>
+    </div>
+    <div class="pain-vs">
+      <div class="pain-side bad">
+        <div class="pain-header">
+          <span class="pain-header-icon">😩</span>
+          <h3>Sem a Biblioteca</h3>
+        </div>
+        <div class="pain-list">
+          <div class="pain-item"><span class="ic">❌</span>Horas perdidas procurando vídeos no YouTube</div>
+          <div class="pain-item"><span class="ic">❌</span>TikTok estagnado com 12 views por vídeo</div>
+          <div class="pain-item"><span class="ic">❌</span>Sem consistência, sem crescimento</div>
+          <div class="pain-item"><span class="ic">❌</span>Perda de oportunidades de monetização</div>
+          <div class="pain-item"><span class="ic">❌</span>Concorrentes crescendo enquanto você trava</div>
+          <div class="pain-item"><span class="ic">❌</span>Frustração e vontade de desistir</div>
+        </div>
+      </div>
+      <div class="pain-side good">
+        <div class="pain-header">
+          <span class="pain-header-icon">🚀</span>
+          <h3>Com a Biblioteca</h3>
+        </div>
+        <div class="pain-list">
+          <div class="pain-item"><span class="ic">✅</span>Conteúdo pronto em menos de 5 minutos</div>
+          <div class="pain-item"><span class="ic">✅</span>Vídeos chegando a 1 milhão de views</div>
+          <div class="pain-item"><span class="ic">✅</span>Postando todos os dias sem esforço</div>
+          <div class="pain-item"><span class="ic">✅</span>Monetização ativa com seguidores reais</div>
+          <div class="pain-item"><span class="ic">✅</span>Crescimento exponencial e constante</div>
+          <div class="pain-item"><span class="ic">✅</span>Liberdade de tempo e renda extra</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════════
-     SOLUTION
-════════════════════════════════ -->
+<!-- ══════════════════ VIDEO DEMO ══════════════════ -->
 <section class="section">
   <div class="container">
-    <div class="badge" style="display:block;text-align:center;">A Solução</div>
-    <h2 class="section-title">Biblioteca Premium de Vídeos</h2>
-    <p class="section-sub">Mais de 5.000 vídeos organizados por categorias, prontos para você usar.</p>
+    <div class="demo-grid">
+      <div class="video-demo-wrap">
+        <video src="video.mp4" autoplay muted loop playsinline></video>
+        <div class="video-demo-overlay">
+          <span class="vdo-tag">🔥 VIRAL</span>
+          <div class="vdo-title">Este é o tipo de conteúdo que você vai ter acesso</div>
+          <div class="vdo-stats">
+            <span class="vdo-stat">👁️ 1.2M</span>
+            <span class="vdo-stat">❤️ 98K</span>
+            <span class="vdo-stat">↗️ 47K</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="section-tag">Prévia do conteúdo</div>
+        <h2 class="st">Vídeos que <span style="color:var(--g)">já provaram</span> que viralizam</h2>
+        <p class="sub" style="margin-bottom:32px">Cada vídeo da biblioteca foi selecionado por ter potencial viral comprovado. Você não precisa testar — nós já testamos por você.</p>
+        <div class="demo-points">
+          <div class="dp">
+            <div class="dp-icon">🎯</div>
+            <div><div class="dp-title">Curadoria profissional</div><div class="dp-text">Todos os vídeos passam por filtro de qualidade e potencial viral antes de entrar na biblioteca.</div></div>
+          </div>
+          <div class="dp">
+            <div class="dp-icon">📱</div>
+            <div><div class="dp-title">Formato vertical otimizado</div><div class="dp-text">Todos em 9:16, prontos para TikTok, Reels e Shorts. Sem precisar redimensionar.</div></div>
+          </div>
+          <div class="dp">
+            <div class="dp-icon">⚡</div>
+            <div><div class="dp-title">Pronto para publicar</div><div class="dp-text">Adicione legenda e música. Em 5 minutos o conteúdo está pronto para postar.</div></div>
+          </div>
+        </div>
+        <a href="#pricing" class="btn btn-g" style="margin-top:28px;max-width:320px">Ver preço especial →</a>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- ══════════════════ CATEGORIES ══════════════════ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="center" style="margin-bottom:40px">
+      <div class="section-tag">12 Nichos</div>
+      <h2 class="st">Conteúdo para qualquer perfil</h2>
+      <p class="sub">Independente do seu nicho, temos vídeos que performam no seu público.</p>
+    </div>
     <div class="cat-grid">
-      <div class="cat-card"><span class="dot"></span>Lifestyle</div>
-      <div class="cat-card"><span class="dot"></span>Humor</div>
-      <div class="cat-card"><span class="dot"></span>Motivação</div>
-      <div class="cat-card"><span class="dot"></span>Empreendedorismo</div>
-      <div class="cat-card"><span class="dot"></span>Curiosidades</div>
-      <div class="cat-card"><span class="dot"></span>Frases</div>
-      <div class="cat-card"><span class="dot"></span>Inteligência Artificial</div>
-      <div class="cat-card"><span class="dot"></span>Luxo</div>
-      <div class="cat-card"><span class="dot"></span>Dinheiro</div>
-      <div class="cat-card"><span class="dot"></span>Negócios</div>
-      <div class="cat-card"><span class="dot"></span>Lifestyle Feminino</div>
-      <div class="cat-card"><span class="dot"></span>Lifestyle Masculino</div>
+      <div class="cat"><span class="cat-dot"></span>Lifestyle</div>
+      <div class="cat"><span class="cat-dot"></span>Humor</div>
+      <div class="cat"><span class="cat-dot"></span>Motivação</div>
+      <div class="cat"><span class="cat-dot"></span>Empreendedorismo</div>
+      <div class="cat"><span class="cat-dot"></span>Curiosidades</div>
+      <div class="cat"><span class="cat-dot"></span>Frases</div>
+      <div class="cat"><span class="cat-dot"></span>Inteligência Artificial</div>
+      <div class="cat"><span class="cat-dot"></span>Luxo</div>
+      <div class="cat"><span class="cat-dot"></span>Dinheiro</div>
+      <div class="cat"><span class="cat-dot"></span>Negócios</div>
+      <div class="cat"><span class="cat-dot"></span>Lifestyle Feminino</div>
+      <div class="cat"><span class="cat-dot"></span>Lifestyle Masculino</div>
     </div>
-
-    <div class="banner-cta">
-      <h3>Basta baixar, editar e publicar.</h3>
-      <p>Mesmo quem nunca editou consegue utilizar. Interface simples, pastas organizadas, resultado profissional.</p>
-      <a href="#pricing" class="btn btn-green">QUERO ACESSAR AGORA</a>
+    <div style="text-align:center">
+      <a href="#pricing" class="btn btn-g" style="max-width:340px;margin:0 auto">🎬 Quero acesso a todos os nichos</a>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════════
-     WHAT YOU GET
-════════════════════════════════ -->
-<section class="section section-alt">
-  <div class="container">
-    <div class="badge" style="display:block;text-align:center;">O que você recebe</div>
-    <h2 class="section-title">Tudo que você precisa para crescer</h2>
-    <p class="section-sub">Um pacote completo para nunca ficar sem conteúdo.</p>
-    <div class="get-grid">
-      <div class="get-item">
-        <div class="get-icon">🎬</div>
-        <div><h4>5.000+ Vídeos</h4><p>Biblioteca enorme, sempre crescendo</p></div>
-      </div>
-      <div class="get-item">
-        <div class="get-icon">🔄</div>
-        <div><h4>Atualizações</h4><p>Conteúdo novo adicionado regularmente</p></div>
-      </div>
-      <div class="get-item">
-        <div class="get-icon">⚡</div>
-        <div><h4>Acesso Imediato</h4><p>Disponível segundos após o pagamento</p></div>
-      </div>
-      <div class="get-item">
-        <div class="get-icon">📁</div>
-        <div><h4>Pastas Organizadas</h4><p>Separadas por nicho para fácil navegação</p></div>
-      </div>
-      <div class="get-item">
-        <div class="get-icon">💎</div>
-        <div><h4>Alta Qualidade</h4><p>Vídeos em resolução elevada</p></div>
-      </div>
-      <div class="get-item">
-        <div class="get-icon">📱</div>
-        <div><h4>Download Rápido</h4><p>Acesse pelo celular ou computador</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════
-     HOW IT WORKS
-════════════════════════════════ -->
+<!-- ══════════════════ HOW IT WORKS ══════════════════ -->
 <section class="section">
   <div class="container">
-    <div class="badge" style="display:block;text-align:center;">Como Funciona</div>
-    <h2 class="section-title">Simples assim</h2>
-    <p class="section-sub">4 passos para você começar a postar hoje mesmo.</p>
+    <div class="center" style="margin-bottom:48px">
+      <div class="section-tag">Como funciona</div>
+      <h2 class="st">Do zero ao viral em 4 passos</h2>
+    </div>
     <div class="steps">
       <div class="step">
-        <div class="step-left">
-          <div class="step-num">1</div>
-          <div class="step-line"></div>
-        </div>
-        <div class="step-content">
-          <h4>Receba o acesso</h4>
-          <p>Após o pagamento, você recebe o link imediatamente por e-mail ou WhatsApp.</p>
-        </div>
+        <div class="step-l"><div class="step-num">1</div><div class="step-line"></div></div>
+        <div class="step-r"><h4>Compre e receba o acesso</h4><p>Após o pagamento (PIX ou cartão), o link chega no seu e-mail em segundos.</p></div>
       </div>
       <div class="step">
-        <div class="step-left">
-          <div class="step-num">2</div>
-          <div class="step-line"></div>
-        </div>
-        <div class="step-content">
-          <h4>Escolha os vídeos</h4>
-          <p>Navegue pelas pastas organizadas e selecione os vídeos do seu nicho.</p>
-        </div>
+        <div class="step-l"><div class="step-num">2</div><div class="step-line"></div></div>
+        <div class="step-r"><h4>Escolha os vídeos do seu nicho</h4><p>Navegue pelas pastas organizadas e baixe os vídeos que mais combinam com o seu perfil.</p></div>
       </div>
       <div class="step">
-        <div class="step-left">
-          <div class="step-num">3</div>
-          <div class="step-line"></div>
-        </div>
-        <div class="step-content">
-          <h4>Edite rapidamente</h4>
-          <p>Adicione legenda, música ou seu logo. Leva menos de 5 minutos.</p>
-        </div>
+        <div class="step-l"><div class="step-num">3</div><div class="step-line"></div></div>
+        <div class="step-r"><h4>Edite em 5 minutos</h4><p>Adicione sua legenda, música ou logo. Qualquer app gratuito resolve — CapCut, VN, InShot.</p></div>
       </div>
       <div class="step">
-        <div class="step-left">
-          <div class="step-num">4</div>
-        </div>
-        <div class="step-content">
-          <h4>Publique e cresça</h4>
-          <p>Poste com consistência e veja seu perfil crescer todo dia.</p>
-        </div>
+        <div class="step-l"><div class="step-num">4</div></div>
+        <div class="step-r"><h4>Publique e veja crescer</h4><p>Poste com consistência e acompanhe as visualizações subindo. É isso.</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════════
-     RESULTS
-════════════════════════════════ -->
+<!-- ══════════════════ RESULTS ══════════════════ -->
 <section class="section section-alt">
   <div class="container">
-    <div class="badge" style="display:block;text-align:center;">Resultados</div>
-    <h2 class="section-title">O que acontece quando você usa</h2>
-    <p class="section-sub">A diferença entre não ter conteúdo e ter a biblioteca certa.</p>
-    <div class="results-grid">
-      <div class="before-card">
-        <div class="result-label">Antes</div>
-        <div class="result-num" style="color:var(--red)">12</div>
-        <div class="result-note">visualizações</div>
+    <div class="center" style="margin-bottom:48px">
+      <div class="section-tag">Resultados reais</div>
+      <h2 class="st">O que acontece quando você usa</h2>
+      <p class="sub">Números reais de clientes que usaram a biblioteca.</p>
+    </div>
+    <div class="results-showcase">
+      <div class="result-card">
+        <div class="result-num">12</div>
+        <div class="result-label">Views antes</div>
+        <div class="result-arrow">↓ sem biblioteca</div>
       </div>
-      <div class="after-card">
-        <div class="result-label">Depois</div>
-        <div class="after-nums">
-          <div class="after-row">
-            <div class="after-bar"><div class="after-fill" style="width:10%"></div></div>
-            <div class="after-val">15.000</div>
-          </div>
-          <div class="after-row">
-            <div class="after-bar"><div class="after-fill" style="width:30%"></div></div>
-            <div class="after-val">98.000</div>
-          </div>
-          <div class="after-row">
-            <div class="after-bar"><div class="after-fill" style="width:60%"></div></div>
-            <div class="after-val">450.000</div>
-          </div>
-          <div class="after-row">
-            <div class="after-bar"><div class="after-fill" style="width:100%"></div></div>
-            <div class="after-val">1.200.000</div>
-          </div>
-        </div>
+      <div class="result-card">
+        <div class="result-num">15K</div>
+        <div class="result-label">Views · 1ª semana</div>
+        <div class="result-arrow">📈 com a biblioteca</div>
+      </div>
+      <div class="result-card">
+        <div class="result-num">98K</div>
+        <div class="result-label">Views · 2ª semana</div>
+        <div class="result-arrow">📈 crescendo</div>
+      </div>
+      <div class="result-card">
+        <div class="result-num">450K</div>
+        <div class="result-label">Views · mês 1</div>
+        <div class="result-arrow">🚀 viral</div>
+      </div>
+      <div class="result-card">
+        <div class="result-num">1.2M</div>
+        <div class="result-label">Views · mês 2</div>
+        <div class="result-arrow">🔥 explosão</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════════
-     TESTIMONIALS
-════════════════════════════════ -->
+<!-- ══════════════════ TESTIMONIALS ══════════════════ -->
 <section class="section">
   <div class="container">
-    <div class="badge" style="display:block;text-align:center;">Depoimentos</div>
-    <h2 class="section-title">O que nossos clientes dizem</h2>
-    <p class="section-sub">Pessoas reais, resultados reais.</p>
+    <div class="center" style="margin-bottom:48px">
+      <div class="section-tag">Depoimentos</div>
+      <h2 class="st">Quem já usa, não para</h2>
+      <p class="sub">+3.200 criadores já transformaram seus perfis com a biblioteca.</p>
+    </div>
     <div class="testi-grid">
-      <div class="testi-card">
-        <div class="stars">⭐⭐⭐⭐⭐</div>
-        <p class="testi-text">"Economizei horas procurando conteúdo. Agora tenho tudo organizado e posto todos os dias sem stress."</p>
-        <div class="testi-author">
-          <div class="testi-avatar" style="background:rgba(0,200,81,.15);color:var(--green)">A</div>
-          <div><div class="testi-name">Ana Clara</div><div class="testi-handle">@anaclara.tiktok</div></div>
+      <div class="testi">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"Economizei horas que eu perdia procurando vídeo. Agora posto todo dia e meu TikTok saiu de 300 para 28 mil seguidores em 3 semanas."</p>
+        <div class="testi-foot">
+          <div class="tav" style="background:rgba(0,230,100,.12);color:var(--g)">A</div>
+          <div>
+            <div class="tname">Ana Clara S.</div>
+            <div class="tverified">✓ Compra verificada</div>
+          </div>
         </div>
       </div>
-      <div class="testi-card">
-        <div class="stars">⭐⭐⭐⭐⭐</div>
-        <p class="testi-text">"Comecei a postar todos os dias. Em duas semanas meu perfil saiu de 200 para mais de 5 mil seguidores."</p>
-        <div class="testi-author">
-          <div class="testi-avatar" style="background:rgba(99,102,241,.15);color:#818cf8">M</div>
-          <div><div class="testi-name">Marcos Paulo</div><div class="testi-handle">@marcospaulo</div></div>
+      <div class="testi">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"Meu primeiro vídeo com o conteúdo da biblioteca chegou a 450 mil views. Nunca tinha passado de 500. Valeu demais."</p>
+        <div class="testi-foot">
+          <div class="tav" style="background:rgba(99,102,241,.12);color:#818cf8">M</div>
+          <div>
+            <div class="tname">Marcos P.</div>
+            <div class="tverified">✓ Compra verificada</div>
+          </div>
         </div>
       </div>
-      <div class="testi-card">
-        <div class="stars">⭐⭐⭐⭐⭐</div>
-        <p class="testi-text">"Valeu cada centavo. Já recuperei o investimento com as parcerias que vieram depois do crescimento."</p>
-        <div class="testi-author">
-          <div class="testi-avatar" style="background:rgba(245,197,24,.1);color:var(--gold)">J</div>
-          <div><div class="testi-name">Julia Ferreira</div><div class="testi-handle">@juliaferreira_</div></div>
+      <div class="testi">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"Já recuperei o investimento 10x com as parcerias que vieram depois do crescimento. R$47 foi o melhor gasto do ano."</p>
+        <div class="testi-foot">
+          <div class="tav" style="background:rgba(251,191,36,.1);color:var(--gold)">J</div>
+          <div>
+            <div class="tname">Julia F.</div>
+            <div class="tverified">✓ Compra verificada</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════════
-     GUARANTEE
-════════════════════════════════ -->
+<!-- ══════════════════ GUARANTEE ══════════════════ -->
 <section class="section section-alt">
   <div class="container">
-    <div class="guarantee-box">
-      <div class="guarantee-icon">🛡️</div>
-      <div class="guarantee-text">
-        <h3>Garantia de 7 dias sem risco</h3>
-        <p>Compre com total tranquilidade. Se em 7 dias você não estiver satisfeito com a qualidade da biblioteca, basta entrar em contato e devolvemos 100% do seu dinheiro. Sem perguntas, sem burocracia.</p>
+    <div class="guarantee">
+      <div class="g-icon">🛡️</div>
+      <div class="g-text">
+        <h3>Garantia Total de 7 Dias</h3>
+        <p>Compre sem risco. Se por qualquer motivo você não ficar 100% satisfeito com a qualidade dos vídeos, basta mandar uma mensagem em até 7 dias e devolvemos <strong>100% do seu dinheiro</strong>. Sem perguntas, sem burocracia. Risco zero pra você.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════════
-     PRICING
-════════════════════════════════ -->
+<!-- ══════════════════ PRICING ══════════════════ -->
 <section id="pricing" class="section">
   <div class="container">
-    <div class="badge" style="display:block;text-align:center;">Oferta Especial</div>
-    <h2 class="section-title">Comece hoje por muito menos</h2>
-    <p class="section-sub">Preço promocional por tempo limitado. Não perca.</p>
-
-    <div class="pricing-card">
-      <div class="pricing-tag">🔥 Melhor Oferta</div>
-      <div class="price-old">De R$ 197,00</div>
-      <div class="price-new"><span>R$</span>47</div>
-      <div class="price-install">ou 12x de R$ 4,70 no cartão</div>
-
-      <ul class="pricing-features">
-        <li>5.000+ vídeos organizados por nicho</li>
-        <li>Acesso imediato após pagamento</li>
-        <li>Pastas organizadas por categoria</li>
-        <li>Atualizações incluídas</li>
-        <li>Alta qualidade de vídeo</li>
-        <li>Download rápido pelo celular ou PC</li>
-        <li>Garantia de 7 dias</li>
-      </ul>
-
-      <a href="#" class="btn btn-green btn-pulse" style="width:100%;text-align:center;font-size:1.15rem;">
-        ✅ QUERO MEU ACESSO AGORA
-      </a>
-
-      <div class="pricing-secure">
-        <span class="secure-badge">🔒 Checkout criptografado</span>
-        <span class="secure-badge">✅ Pagamento seguro</span>
-      </div>
+    <div class="center" style="margin-bottom:40px">
+      <div class="section-tag">Oferta especial</div>
+      <h2 class="st">Garanta agora antes de acabar</h2>
+      <p class="sub">Preço promocional por tempo limitado. Após esgotar as vagas, o valor volta para R$197.</p>
     </div>
-
-    <div class="footer-payments" style="margin-top:28px;">
-      <div class="pay-badge">⚡ PIX</div>
-      <div class="pay-badge">💳 Cartão de Crédito</div>
-      <div class="pay-badge">🏦 Boleto</div>
+    <div class="pricing-card">
+      <div class="pc-tag">🔥 ÚLTIMA CHANCE — OFERTA EXPIRA HOJE</div>
+      <div class="pc-spots">⚠️ Apenas <strong id="spotsNum">17</strong> acessos disponíveis neste preço</div>
+      <div class="price-old">De R$ 197,00</div>
+      <div class="price-new"><sup>R$</sup>47</div>
+      <div class="price-install">ou 12x de R$ 4,70 no cartão</div>
+      <div class="price-save">💰 Você economiza R$ 150,00 agora</div>
+      <ul class="pf-list">
+        <li>5.000+ vídeos organizados por nicho</li>
+        <li>12 categorias (lifestyle, humor, negócios…)</li>
+        <li>Acesso imediato após o pagamento</li>
+        <li>Atualizações incluídas para sempre</li>
+        <li>Alta qualidade — prontos para publicar</li>
+        <li>Acesso pelo celular e computador</li>
+        <li>Garantia de 7 dias ou dinheiro de volta</li>
+      </ul>
+      <a href="#" class="btn btn-g btn-pulse" style="font-size:1.1rem;padding:20px">
+        ✅ SIM, QUERO MEUS 5.000 VÍDEOS!
+      </a>
+      <div class="pay-methods">
+        <span class="pm">⚡ PIX</span>
+        <span class="pm">💳 Cartão</span>
+        <span class="pm">🔒 Seguro</span>
+        <span class="pm">🔐 Criptografado</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════════
-     FAQ
-════════════════════════════════ -->
+<!-- ══════════════════ FAQ ══════════════════ -->
 <section class="section section-alt">
   <div class="container">
-    <div class="badge" style="display:block;text-align:center;">FAQ</div>
-    <h2 class="section-title">Perguntas frequentes</h2>
-    <p class="section-sub">Tire suas dúvidas antes de comprar.</p>
+    <div class="center" style="margin-bottom:40px">
+      <div class="section-tag">Dúvidas</div>
+      <h2 class="st">Perguntas frequentes</h2>
+    </div>
     <div class="faq-list">
       <details>
-        <summary>Posso acessar pelo celular?</summary>
-        <div class="faq-answer">Sim! A biblioteca é totalmente acessível pelo celular e pelo computador. Você pode baixar os vídeos diretamente para o seu dispositivo e já editar na hora.</div>
+        <summary>Recebo o acesso imediatamente?</summary>
+        <div class="fa">Sim! Assim que o pagamento é confirmado (instantâneo no PIX, alguns minutos no cartão), o link de acesso cai no seu e-mail automaticamente.</div>
       </details>
       <details>
-        <summary>Recebo o acesso imediatamente?</summary>
-        <div class="faq-answer">Sim. Após a confirmação do pagamento (instantânea no PIX, alguns minutos no cartão), você recebe o link de acesso por e-mail e/ou WhatsApp imediatamente.</div>
+        <summary>Funciona pelo celular?</summary>
+        <div class="fa">Sim, 100%. Você acessa a biblioteca pelo celular, baixa os vídeos direto e já edita no CapCut ou qualquer app gratuito.</div>
       </details>
       <details>
         <summary>O acesso é vitalício?</summary>
-        <div class="faq-answer">Sim, o acesso é vitalício. Pague uma vez e use para sempre, incluindo todas as atualizações futuras que forem adicionadas à biblioteca.</div>
+        <div class="fa">Sim! Pague uma vez e acesse para sempre, incluindo todos os novos vídeos que forem adicionados à biblioteca.</div>
       </details>
       <details>
-        <summary>Preciso editar os vídeos?</summary>
-        <div class="faq-answer">Depende do seu objetivo. Alguns vídeos podem ser publicados diretamente; outros se beneficiam de pequenas edições como legendas, música ou sua marca. Mesmo sem experiência, você consegue usar.</div>
+        <summary>Preciso saber editar vídeo?</summary>
+        <div class="fa">Não precisa. Os vídeos já estão prontos. Se quiser personalizar, basta abrir no CapCut (gratuito), adicionar legenda ou música, e publicar. Qualquer pessoa consegue.</div>
       </details>
       <details>
-        <summary>Funciona para outros nichos além do TikTok?</summary>
-        <div class="faq-answer">Sim! Os vídeos funcionam no Instagram Reels, YouTube Shorts, Facebook e qualquer outra plataforma de vídeos curtos.</div>
+        <summary>Funciona para Instagram e YouTube também?</summary>
+        <div class="fa">Sim! Todos os vídeos estão em formato vertical 9:16, perfeitos para TikTok, Instagram Reels, YouTube Shorts e Facebook Reels.</div>
+      </details>
+      <details>
+        <summary>E se eu não gostar?</summary>
+        <div class="fa">Sem problema. Você tem 7 dias de garantia total. Se não gostar por qualquer motivo, manda mensagem e devolvemos 100% do valor. Sem perguntas.</div>
       </details>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════════
-     FOOTER
-════════════════════════════════ -->
+<!-- FINAL CTA -->
+<section class="section">
+  <div class="container">
+    <div class="final-cta">
+      <h2>Chega de TikTok travado.<br/>Comece a crescer <span style="color:var(--g)">hoje.</span></h2>
+      <p>Mais de 3.200 criadores já usam a biblioteca. Você vai ficar pra trás?</p>
+      <a href="#pricing" class="btn btn-g btn-pulse">🚀 QUERO MEUS 5.000 VÍDEOS — R$47</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
   <div class="container">
-    <div class="footer-payments">
-      <span class="secure-badge" style="font-size:.85rem;color:var(--text)">🔒 Ambiente 100% seguro</span>
-      <div class="pay-badge">⚡ PIX</div>
-      <div class="pay-badge">💳 Cartão</div>
-      <div class="pay-badge">🔐 Criptografado</div>
+    <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:14px">
+      <span class="pm">🔒 Checkout seguro</span>
+      <span class="pm">⚡ PIX</span>
+      <span class="pm">💳 Cartão</span>
+      <span class="pm">🛡️ Garantia 7 dias</span>
     </div>
-    <p class="footer-note">© 2024 Biblioteca Premium de Vídeos · Todos os direitos reservados</p>
-    <p class="footer-note" style="margin-top:6px;">Os resultados apresentados são individuais e não garantem os mesmos resultados para todos os usuários.</p>
+    <p class="foot-note">© 2024 Biblioteca Premium de Vídeos · Todos os direitos reservados</p>
+    <p class="foot-note">Os resultados apresentados são individuais e não garantem os mesmos resultados para todos os usuários.</p>
   </div>
 </footer>
 
-<!-- ════════════════════════════════
-     STICKY CTA
-════════════════════════════════ -->
-<div class="sticky-cta" id="stickyCta">
-  <div class="sticky-price">Biblioteca Premium · <strong>R$ 47</strong></div>
-  <a href="#pricing" class="btn btn-green" style="padding:12px 28px;font-size:.95rem;">QUERO ACESSAR</a>
+<!-- STICKY -->
+<div class="sticky" id="stickyBar">
+  <div class="sticky-info">Biblioteca Premium · <strong>R$ 47</strong> <span style="color:var(--muted);font-size:.8rem;text-decoration:line-through;margin-left:4px">R$197</span></div>
+  <a href="#pricing" class="btn btn-g" style="width:auto;padding:12px 24px;font-size:.88rem">GARANTIR AGORA →</a>
 </div>
 
 <script>
-  const cta = document.getElementById('stickyCta');
-  const hero = document.getElementById('hero');
-  const obs = new IntersectionObserver(([e]) => {
-    cta.classList.toggle('visible', !e.isIntersecting);
-  }, { threshold: 0.1 });
-  obs.observe(hero);
+// Countdown — 2h a partir do carregamento
+(function(){
+  const end = Date.now() + 2*60*60*1000;
+  function tick(){
+    const diff = Math.max(0, end - Date.now());
+    const h = Math.floor(diff/3600000);
+    const m = Math.floor((diff%3600000)/60000);
+    const s = Math.floor((diff%60000)/1000);
+    const pad = n => String(n).padStart(2,'0');
+    document.getElementById('cdH').textContent = pad(h);
+    document.getElementById('cdM').textContent = pad(m);
+    document.getElementById('cdS').textContent = pad(s);
+    document.getElementById('uTimer').textContent = `${pad(h)}:${pad(m)}:${pad(s)}`;
+    if(diff > 0) setTimeout(tick, 1000);
+  }
+  tick();
+})();
 
-  // Animate result bars on scroll
-  const bars = document.querySelectorAll('.after-fill');
-  const barObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.transition = 'width 1.2s cubic-bezier(.4,0,.2,1)';
-        barObs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.3 });
-  bars.forEach(b => { const w = b.style.width; b.style.width = '0'; barObs.observe(b); setTimeout(() => b.style.width = w, 100); });
+// Spots countdown — diminui lentamente
+(function(){
+  let spots = 17;
+  function reduce(){
+    if(spots > 7){
+      spots--;
+      document.getElementById('spotsNum').textContent = spots;
+      document.getElementById('uSpots').textContent = spots;
+    }
+    setTimeout(reduce, Math.random()*120000 + 60000);
+  }
+  setTimeout(reduce, 45000);
+})();
+
+// Sticky bar
+const hero = document.getElementById('hero');
+const sticky = document.getElementById('stickyBar');
+new IntersectionObserver(([e])=>{
+  sticky.classList.toggle('on', !e.isIntersecting);
+},{threshold:0.05}).observe(hero);
 </script>
 </body>
 </html>
